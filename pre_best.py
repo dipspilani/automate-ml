@@ -14,7 +14,7 @@ def get_table_download_link(df):
     """
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-    href = f'<a href="data:file/csv;base64,{b64}">**Download corrected csv file (make sure to rename it and add .csv/.xlsx in the end)**</a>'
+    href = f'<a href="data:file/csv;base64,{b64}" download="corrected.csv">**Download corrected csv file**</a>'
     return href
 
 def label_encoder(df):
