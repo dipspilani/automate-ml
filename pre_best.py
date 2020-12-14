@@ -244,7 +244,7 @@ if mode=='Preprocess-1':
                      st.table(dataset.head(8))
 
                  elif choicee=="Custom Fill":
-                     value = st.text_input('Enter Value' , value = None , max_chars = 10)
+                     value = st.number_input(label = 'Enter Value')
                      try:
                          value = float(value)
                          dataset[error[:ind-1]].fillna(value , inplace = True)
