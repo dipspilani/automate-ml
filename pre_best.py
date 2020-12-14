@@ -1,4 +1,5 @@
 import streamlit as st
+import tpot
 from tpot import TPOTClassifier
 import pandas as pd
 import numpy as np
