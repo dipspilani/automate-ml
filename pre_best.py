@@ -30,7 +30,7 @@ def one_hot_encode(df,col):
                                         OneHotEncoder(), 
                                         [col])], 
                                       remainder='passthrough')
-    dataset = np.array(columnTransformer.fit_transform(df), dtype = np.float)
+    dataset = np.array(columnTransformer.fit_transform(df))
     dataset = pd.DataFrame(dataset)
     return dataset
 
