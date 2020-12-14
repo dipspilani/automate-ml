@@ -101,10 +101,10 @@ if mode=='Preprocess-2':
 
         if dataset.isnull().values.any():
             st.warning('This dataset contains missing values. For best results, fix it in Preprocess-1')
-        else:
-            cols = ['None'] + list(dataset.columns)
-            dx = st.selectbox('Select column to normalize/scale its values' , cols)
-            if dx != 'None':
+        #else:
+        cols = ['None'] + list(dataset.columns)
+        dx = st.selectbox('Select column to normalize/scale its values' , cols)
+        if dx != 'None':
                 try:
                     dataset[dx] = dataset[dx].astype(float)
                     sc_choice = st.selectbox('Choose scaling strategy' , ['None', 'Standard Scaler' , 'Min-Max Scaler' , 'Robust Scaler'])
