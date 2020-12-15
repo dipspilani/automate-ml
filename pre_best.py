@@ -273,8 +273,9 @@ if mode=='Preprocess-1':
                      
                      xxxx = dataset[error[:ind-1]]
                      xxxx.dropna(inplace = True)
-                     st.write(random.choice(list(xxxx)))   
-                     dataset[error[:ind-1]].fillna(random.choice(list(xxxx)) , inplace = True)
+                     yo_bro = random.choice(list(xxxx))
+                     st.write(yo_bro)
+                     dataset[error[:ind-1]].fillna(yo_bro , inplace = True)
                      #dataset[error[:ind-1]].fillna(random.choice(dataset[dataset[error[:ind-1]] != np.nan][error[:ind-1]]) , inplace=True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
