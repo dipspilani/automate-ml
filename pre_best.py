@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import base64
 import PIL
+from io import BytesIO
 import random
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
 
