@@ -87,6 +87,7 @@ if mode == "Code":
 #st.header('Upload Data Here')
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
 
+
 if mode=="Preprocess Image":
     st.header('Upload Image Here')
     data = st.file_uploader(label="Select File (.jpg or .gif or .png)" , type=['jpg','png' , 'gif'])
@@ -94,13 +95,149 @@ if mode=="Preprocess Image":
         try:
             img = Image.open(data)
             chk = st.checkbox('Display Image')
+            st.write("**Image dimension:**")
+            st.info(img.size)
             if chk:
                 try:
                     st.image(img,caption = "Uploaded Image" , width = 400)
                 except:
-                    st.warning('Something wrong. Can not display Image')    
+                    st.warning('Something wrong. Can not display Image')
+            opn = st.selectbox('Choose Operation' , ['None','Binarize','Grayscale','BoxBlur','GaussianBlur','Kernel (convolution kernel)',
+                                'RankFilter','AutoContrast','Colorize B-W image','Padding','Equalize',
+                                'Posterize'])
+            if opn=="Binarize":
+                try:
+                    bina = img.convert("1")
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                    
+                except:
+                    st.warning('Something went wrong :((')
+            if opn=="Grayscale":
+                try:
+                    bina = img.convert("L")
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                    
+                except:
+                    st.warning('Something went wrong :((')    
+            if opn=="BoxBlur":
+                from PIL import ImageFilter
+                sizz = st.number_input(label = 'Enter radius')
+                try:
+                    bina = img.filter(ImageFilter.BoxBlur(radius = sizz))
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((')
+            if opn=="GaussianBlur":
+                from PIL import ImageFilter
+                sizz = st.number_input(label = 'Enter radius')
+                try:
+                    bina = img.filter(ImageFilter.GaussianBlur(radius = sizz))
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((')
+            
+            if opn=="Kernel (convolution kernel)":
+                from PIL import ImageFilter
+                sizz = st.number_input(label = 'Enter kernel size (choose only 3 or 5)', value = 3)
+                try:
+                    bina = img.filter(ImageFilter.Kernel((int(sizz),int(sizz)) , [-1,-1,-1,-1,9,-1,-1,-1,-1]+ [-1]*(sizz**2 - 9)))
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((') 
+
+            if opn=="RankFilter":
+                from PIL import ImageFilter
+                sizz = st.number_input(label = 'Enter kernel size (recommended: 3 or 5)', value = 3)
+                rank = st.number_input(label = 'Enter rank (0 for min filter , size*size/2 for median filter , size*size-1 for max filter)', value = 0, max_value = sizz*sizz -1)
+                try:
+                    bina = img.filter(ImageFilter.RankFilter(size = sizz , rank = rank))
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((') 
+            
+            if opn=="AutoContrast":
+                from PIL import ImageOps
+                st.info('Removes cutoff % of lightest and darkest pixels and makes them 255 and 0 respectively')
+                sizz = st.number_input(label = 'Enter cutoff', value = 0)
+                try:
+                    bina = ImageOps.autocontrast(img , cutoff = sizz)
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((')            
+            
+            if opn=='Colorize B-W image':
+                from PIL import ImageOps
+                st.info('Colorize black and white images')
+   
+                sizz = st.text_input(label = 'Color to use for black pixels , enter three numbers between () separated by commas (range 0-255)', value = "()")
+               
+                if len(sizz)>=7 and len(sizz)<=13 and sizz.count(",")==2:
+                    try:
+                        sizz = sizz[1:len(sizz)-1]
+                        elem = sizz.split(",")
+                        for i in range(3):
+                            elem[i] = int(elem[i])
+                    except:
+                        st.warning('Values can not be processed')
+                sizz2 = st.text_input(label = 'Color to use for white pixels , enter three numbers between () separated by commas (range 0-255)', value = "()")
+               
+                if len(sizz2)>=7 and len(sizz2)<=13 and sizz.count(",")==2:
+                    try:
+                        sizz2 = sizz2[1:len(sizz2)-1]
+                        elem2 = sizz2.split(",")
+                        for i in range(3):
+                            elem2[i] = int(elem2[i])
+                    except:
+                        st.warning('Values can not be processed')        
+                try:
+                    bina = ImageOps.colorize(img , black = (elem[0],elem[1],elem[2]) , white = (elem2[0],elem2[1],elem2[2]))
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((')  
+            if opn=='Padding':
+                from PIL import ImageOps
+                sizz = st.number_input(label = 'Enter width', value = 100,max_value = 10000)
+                sizz2 = st.number_input(label = 'Enter height', value = 100 , max_value = 10000)
+                try:
+                    bina = ImageOps.pad(img , size = (int(sizz) , int(sizz2)))
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((') 
+
+            if opn=='Equalize':
+                from PIL import ImageOps
+                try:
+                    bina = ImageOps.equalize(img)
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((') 
+            
+            if opn=='Posterize':
+                from PIL import ImageOps
+                st.info('Reduces number of bits for each color channel')
+                sizz = st.number_input(label = 'Enter bits to keep', value = 1,max_value = 8 , min_value = 1)
+                try:
+                    bina = ImageOps.posterize(img , sizz)
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :((')    
+                    
         except:
             st.warning('Invalid/Corrupted File')
+
+
+
 
 
 
