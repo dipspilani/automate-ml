@@ -25,6 +25,19 @@ def label_encoder(df):
     df = lab.fit_transform(df).astype(np.float)
     return (df,lab.classes_)
 
+
+def get_image_download_link(img):
+	"""Generates a link allowing the PIL image to be downloaded
+	in:  PIL image
+	out: href string
+	"""
+	buffered = BytesIO()
+	img.save(buffered, format="JPEG")
+	img_str = base64.b64encode(buffered.getvalue()).decode()
+	href = f'<a href="data:file/jpg;base64,{img_str}" download="processed_image.jpg">Download result</a>'
+	return href
+
+
 def one_hot_encode(df,col):
     from sklearn.preprocessing import OneHotEncoder 
     from sklearn.compose import ColumnTransformer
