@@ -147,7 +147,7 @@ if mode=="Preprocess Image":
                     st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
                     st.image(bina,caption = "Modified Image" , width = 400)
                 except:
-                    st.warning('Something went wrong :(('		
+                    st.warning('Something went wrong :((')		
 		
             if opn=="Grayscale":
                 try:
