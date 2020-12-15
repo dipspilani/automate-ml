@@ -263,7 +263,9 @@ if mode=='Preprocess-1':
                      st.table(dataset.head(8))
 
                  elif choice_text == "Mode Fill":
-                     dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].mode() , inplace = True)
+                     #dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].mode() , inplace = True)
+                     nig = dataset[error[:ind-1]].mode()[0]
+                     dataset[error[:ind-1]].fillna(nig , inplace = True)   
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
 
