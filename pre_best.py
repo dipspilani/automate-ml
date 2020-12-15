@@ -147,7 +147,7 @@ if mode=="Preprocess Image":
                 except:
                     st.warning('Something went wrong :((')
 	     
-	   if opn=="Edge Enhance":
+	    if opn=="Edge Enhance":
                 from PIL import ImageFilter
                 try:
                     bina = img.filter(ImageFilter.EDGE_ENHANCE)
