@@ -270,7 +270,8 @@ if mode=='Preprocess-1':
                      st.table(dataset.head(8))
 
                  elif choice_text == "Random Fill":
-                     dataset[error[:ind-1]].fillna(random.choice(dataset[error[:ind-1]].values.tolist()) , inplace = True)
+                     ryder = random.choice(list(dataset[error[:ind-1]].values.tolist()))
+                     dataset[error[:ind-1]].fillna(ryder , inplace = True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
                      
