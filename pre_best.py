@@ -79,12 +79,31 @@ st.sidebar.info('4. Use Preprocess-2 for scaling/normalizing')
 st.sidebar.info('5. Select "Choose Best Model and get yourself the best model based on desired strategy and code for the same!')
 
 st.sidebar.subheader('Select Mode')
-mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2', 'Get Best Model and its code'))
+mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image', 'Get Best Model and its code'))
 st.sidebar.info('**Next Up:** Text Preprocessing')
 if mode == "Code":
     st.balloons()
 #st.header('Upload Data Here')
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
+
+if mode=="Preprocess Image":
+    st.header('Upload Image Here')
+    data = st.file_uploader(label="Select File (.jpg or .gif or .png)" , type=['jpg','png' , 'gif'])
+    if data is not None:
+        try:
+            img = Image.open(data)
+            chk = st.checkbox('Display Image')
+            if chk:
+                try:
+                    st.image(img,caption = "Uploaded Image" , width = 400)
+                except:
+                    st.warning('Something wrong. Can not display Image')    
+        except:
+            st.warning('Invalid/Corrupted File')
+
+
+
+
 
 if mode=='Preprocess-2':
     st.markdown('**At each step, data is NOT modified in-place. So you have to download the file at each step**')
