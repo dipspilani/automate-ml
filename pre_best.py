@@ -51,8 +51,8 @@ def one_hot_encode(df,col):
     return dataset
 
 def tpot_object(metric):
-    tpot = TPOTClassifier(generations=30,
-                          population_size = 50,
+    tpot = TPOTClassifier(generations=50,
+                          population_size = 75,
                           scoring = metric,
                           disable_update_check = True,
                           verbosity = 0,
