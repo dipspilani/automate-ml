@@ -120,7 +120,7 @@ if mode=="Preprocess Image":
                     st.warning('Something wrong. Can not display Image')
             opn = st.selectbox('Choose Operation' , ['None','Binarize','Grayscale','BoxBlur','GaussianBlur','Kernel (convolution kernel)',
                                 'RankFilter','AutoContrast','Colorize B-W image','Padding','Equalize',
-                                'Posterize','Edge Enhance'])
+                                'Posterize','Edge Enhance' , 'Contour'])
             if opn=="Binarize":
                 try:
                     bina = img.convert("1")
@@ -140,7 +140,14 @@ if mode=="Preprocess Image":
                 except:
                     st.warning('Something went wrong :((')   
 		
-		
+            if opn=="Contour":
+                from PIL import ImageFilter
+                try:
+                    bina = img.filter(ImageFilter.CONTOUR)
+                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
+                    st.image(bina,caption = "Modified Image" , width = 400)
+                except:
+                    st.warning('Something went wrong :(('		
 		
             if opn=="Grayscale":
                 try:
