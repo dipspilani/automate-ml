@@ -86,6 +86,10 @@ st.markdown("This application is a Streamlit dashboard used "
             "for **preprocessing data and automating optimal sci-kit learn model choice(s) (+ code for the same!)**")
 st.markdown('**Deployed and Maintained by Dipanshu Prasad - https://github.com/dipspilani**')
 
+
+
+st.sidebar.subheader('Select Mode')
+mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image', 'Get Best Model and its code'))
 st.sidebar.subheader('Steps to use the tool:')
 st.sidebar.info('1. Preprocess the file according to desired strategy')
 st.sidebar.info('1. Use Preprocess-1 for missing values and label/one-hot encoding')
@@ -93,9 +97,6 @@ st.sidebar.info('3. Always handle missing values before label/one-hot encoding')
 st.sidebar.info('4. Use Preprocess-2 for scaling/normalizing')
 st.sidebar.info('5. Use Preprocess Images for image data (jpg,png,gif)')
 st.sidebar.info('6. Select "Choose Best Model and get yourself the best model based on desired strategy and code for the same!')
-
-st.sidebar.subheader('Select Mode')
-mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image', 'Get Best Model and its code'))
 st.sidebar.info('**Next Up:** Text Preprocessing')
 if mode == "Code":
     st.balloons()
