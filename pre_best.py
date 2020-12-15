@@ -270,13 +270,13 @@ if mode=='Preprocess-1':
                      st.table(dataset.head(8))
 
                  elif choice_text == "Random Fill":
-                    xxxx123 = dataset[error[:ind-1]]
-                    xxxx123.dropna(inplace = True)
-                    rydernigg = np.random.choice(np.array(xxxx123))
-                    st.write(rydernigg)   
-                    dataset[error[:ind-1]].fillna(str(rydernigg) , inplace = True)
-                    st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
-                    st.table(dataset.head(8))
+                     
+                     xxxx = dataset[error[:ind-1]]
+                     xxxx.dropna(inplace = True)
+                     #dataset[error[:ind-1]].fillna(random.choice(list(xxxx)) , inplace = True)
+                     #dataset[error[:ind-1]].fillna(random.choice(dataset[dataset[error[:ind-1]] != np.nan][error[:ind-1]]) , inplace=True)
+                     st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+                     st.table(dataset.head(8))
                      
             
 
