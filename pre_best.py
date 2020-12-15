@@ -146,16 +146,7 @@ if mode=="Preprocess Image":
                     st.image(bina,caption = "Modified Image" , width = 400)
                 except:
                     st.warning('Something went wrong :((')
-	     
-	    if opn=="Edge Enhance":
-                from PIL import ImageFilter
-                try:
-                    bina = img.filter(ImageFilter.EDGE_ENHANCE)
-                    st.markdown(get_image_download_link(bina), unsafe_allow_html=True)
-                    st.image(bina,caption = "Modified Image" , width = 400)
-                except:
-                    st.warning('Something went wrong :((') 
-	
+	     	
 	
 	
 	
