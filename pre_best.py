@@ -501,10 +501,8 @@ elif mode=='Get Best Model and its code':
                 X = dataset.loc[:,features]
                 y = dataset.loc[:,[target]]
                 scoring = ['None' , 'accuracy','average_precision', 'balanced_accuracy', 'f1', 'f1_macro', 'f1_micro', 'precision'  , 'recall' ,'roc_auc']
-		
-		metric = st.selectbox('Choose scoring metric' , scoring)
-		st.info('Estimated 8-12 minutes waiting time')
-		
+                metric = st.selectbox('Choose scoring metric' , scoring)
+                st.info('Estimated wait time : 8-12 minutes')
                 if metric != 'None':
                     try:
                         with st.spinner('Finding the best preprocessing steps and sci-kit learn algorithm... :hourglass:'):
@@ -520,8 +518,7 @@ elif mode=='Get Best Model and its code':
                             st.code(code,language='python')
                     except:
                         st.warning('Data in unexpected format')
-                        st.info('**TIP:** Preprocess all columns in numercical format' )
-    
+                        st.info('**TIP:** Preprocess all columns in numercical format' )                
     
     
           
