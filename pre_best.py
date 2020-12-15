@@ -64,7 +64,7 @@ def rob_scaler():
 
 
 st.set_page_config(page_title='Preprocess data and get the best Sci-kit learn model' , page_icon = ':bar_chart:' , layout='wide')
-st.title("Extensive data preprocessing tool and optimal sci-kit learn model chooser :bar_chart:")
+st.title("Extensive data preprocessing tool and optimal sci-kit learn pipeline chooser :bar_chart:")
 st.sidebar.title("Menu")
 st.markdown("This application is a Streamlit dashboard used "
             "for **preprocessing data and automating optimal sci-kit learn model choice(s) (+ code for the same!)**")
