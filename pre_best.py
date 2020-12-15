@@ -206,7 +206,7 @@ if mode=='Preprocess-1':
                         st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                         st.dataframe(dataset.head())
                     except:
-                        st.warning('This dataset has missing values/is corrupted')
+                        st.warning('This dataset has missing values/too many values to encode/is corrupted')
 
         elif "(missing values)" in error:
              ind = error.index("(missing values)")
