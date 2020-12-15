@@ -270,35 +270,19 @@ if mode=='Preprocess-1':
                      st.table(dataset.head(8))
 
                  elif choice_text == "Random Fill":
-                     
-                     xxxx = dataset[error[:ind-1]]
-                     xxxx.dropna(inplace = True)
-                     yo_bro = random.choice(list(xxxx))
-                     st.write(yo_bro)
-                     dataset[error[:ind-1]].fillna(yo_bro , inplace = True)
-                     #dataset[error[:ind-1]].fillna(random.choice(dataset[dataset[error[:ind-1]] != np.nan][error[:ind-1]]) , inplace=True)
+                    
+                     dataset[error[:ind-1]].fillna(random.choice(dataset[dataset[error[:ind-1]] != np.nan][error[:ind-1]]) , inplace=True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
                      
-            
-
-        
-
-        
-
-
-
-
-
-        
-        #st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)            
+              
 
 
 
 elif mode=='Get Best Model and its code':
     st.header('Upload Data Here')
     st.warning('Please preprocess the data before proceeding')
-    data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx','data'])
+    data = st.file_uploader(label="Select File (.csv or .xlsx or .data)" , type=['csv','xlsx','data'])
     if data is not None:
         try:
             dataset = pd.read_csv(data)
