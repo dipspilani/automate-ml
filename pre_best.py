@@ -8,6 +8,7 @@ import PIL
 from PIL import Image
 from io import BytesIO
 import random
+import skimage
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
 
 def get_table_download_link(df):
