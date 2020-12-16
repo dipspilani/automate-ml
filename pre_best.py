@@ -501,6 +501,9 @@ elif mode=='Get Best Model and its code':
     if data is not None:
         try:
             dataset = pd.read_csv(data)
+            x = st.checkbox('Show head of the dataset')
+            if x:
+                st.table(dataset.head())	
             if dataset.isnull().values.any():
                 st.warning('This dataset has missing values. Please rectify them in the Preprocess step else the results may be unexpected')
             else:
