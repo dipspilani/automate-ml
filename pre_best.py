@@ -121,7 +121,7 @@ if mode=="Preprocess Image":
                     st.warning('Something wrong. Can not display Image')
             opn = st.selectbox('Choose Operation' , ['None','Binarize','Grayscale','BoxBlur','GaussianBlur','Kernel (convolution kernel)',
                                 'RankFilter','AutoContrast','Colorize B-W image','Padding','Equalize',
-                                'Posterize','Edge Enhance' , 'Contour'])
+                                'Posterize','Edge Enhance' , 'Contour','Stretch/Shrink'])
             if opn=="Binarize":
                 try:
                     bina = img.convert("1")
@@ -130,6 +130,22 @@ if mode=="Preprocess Image":
                     
                 except:
                     st.warning('Something went wrong :((')
+		
+            if opn=="Stretch/Shrink":
+                from skimage.transform import resize
+                try:
+                    bina = np.array(img)
+                    h = st.number_input('Enter height' , value = 100)
+                    w = st.number_input('Enter width' , value = 100)
+                    skimg = resize(bina , (int(h),int(w)))
+                    #binna = Image.fromarray(np.array([skimg])
+                    #st.markdown(get_image_download_link(binna), unsafe_allow_html=True)
+                    st.image(skimg,caption = "Modified Image" , width = 400)
+                    
+                except:
+                    st.warning('Something went wrong :((')		
+		
+		
 		
 		
             if opn=="Edge Enhance":
