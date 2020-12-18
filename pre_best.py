@@ -9,7 +9,6 @@ from PIL import Image
 from io import BytesIO
 import random
 import skimage
-import cv2
 import nltk
 import textblob
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
