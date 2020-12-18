@@ -113,18 +113,7 @@ if mode=="Preprocess Text":
 	st.header('Upload Text File Here')
 	data = st.file_uploader(label="Select File (.txt)" , type=['txt'],encoding = "utf-8")
 	if data is not  None:
-		#try:
-			text = data.read()
-			text = text.decode()
-			text = StringIO(text)
-			checkbox = st.checkbox('Show first few lines')
-			if checkbox:
-				try:
-					st.write(text[:30])
-				except:
-					st.warning('Can not show; somthing wrong! :sad:')
-		#except:
-		#	st.warning('This file is broken')
+		st.warning('Thos feature is not built yet :sad:')
 	
 	
 
