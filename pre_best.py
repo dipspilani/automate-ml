@@ -9,6 +9,9 @@ from PIL import Image
 from io import BytesIO
 import random
 import skimage
+import cv2
+import nltk
+import textblob
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
 
 def get_table_download_link(df):
@@ -90,7 +93,7 @@ st.markdown('**Deployed and Maintained by Dipanshu Prasad - https://github.com/d
 
 
 st.sidebar.subheader('Select Mode')
-mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image', 'Get Best Model and its code'))
+mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image','Preprocess Text', 'Get Best Model and its code','Code'))
 st.sidebar.subheader('Steps to use the tool:')
 st.sidebar.info('1. Preprocess the file according to desired strategy')
 st.sidebar.info('1. Use Preprocess-1 for missing values and label/one-hot encoding')
@@ -101,8 +104,40 @@ st.sidebar.info('6. Select "Choose Best Model and get yourself the best model ba
 st.sidebar.info('**Next Up:** Text Preprocessing')
 if mode == "Code":
     st.balloons()
+    st.write('https://github.com/dipspilani/automate-ml/')	
 #st.header('Upload Data Here')
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
+
+
+if mode=="Preprocess Text":
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if mode=="Preprocess Image":
