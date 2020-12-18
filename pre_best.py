@@ -112,6 +112,7 @@ if mode == "Code":
 if mode=="Preprocess Text":
 	st.header('Upload Text File Here')
     	data = st.file_uploader(label="Select File (.txt)" , type=['txt'])
+	pass
 	
 	
 
