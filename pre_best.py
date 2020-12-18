@@ -114,8 +114,8 @@ if mode=="Preprocess Text":
 	data = st.file_uploader(label="Select File (.txt)" , type=['txt'],encoding = "utf-8")
 	if data is not  None:
 		#try:
-			
-			text = StringIO(data)
+			text = data.read()
+			text = StringIO(text)
 			checkbox = st.checkbox('Show first few lines')
 			if checkbox:
 				try:
