@@ -82,7 +82,7 @@ def rob_scaler():
 # st.markdown(get_table_download_link(df), unsafe_allow_html=True)
 
 
-st.set_page_config(page_title='Preprocess data and get the best Sci-kit learn model' , page_icon = ':bar_chart:' , layout='wide')
+st.set_page_config(page_title='Preprocess data and get the best Sci-kit learn model' , page_icon = ':bar_chart:' , layout='wide', initial_sidebar_state='expanded')
 st.title("Extensive data and image preprocessing tool and optimal sci-kit learn pipeline chooser :bar_chart:")
 st.sidebar.title("Menu")
 st.markdown("This application is a Streamlit dashboard used "
