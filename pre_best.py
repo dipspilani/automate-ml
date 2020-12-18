@@ -113,7 +113,7 @@ if mode=="Preprocess Text":
 	st.header('Upload Text File Here')
 	data = st.file_uploader(label="Select File (.txt)" , type=['txt'])
 	if data is not  None:
-		try:
+		#try:
 			text = text.read()
 			text = str(text,"utf-8")
 			text = StringIO(text)
@@ -123,8 +123,8 @@ if mode=="Preprocess Text":
 					st.write(text[:30])
 				except:
 					st.warning('Can not show; somthing wrong! :sad:')
-		except:
-			st.warning('This file is broken')
+		#except:
+		#	st.warning('This file is broken')
 	
 	
 
