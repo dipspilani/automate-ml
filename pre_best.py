@@ -115,6 +115,7 @@ if mode=="Preprocess Text":
 	if data is not  None:
 		#try:
 			text = data.read()
+			text = text.decode()
 			text = StringIO(text)
 			checkbox = st.checkbox('Show first few lines')
 			if checkbox:
