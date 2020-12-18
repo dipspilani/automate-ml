@@ -122,7 +122,7 @@ if mode=="Preprocess Text":
 					st.write(text[:30])
 				except:
 					st.warning('Can not show; somthing wrong! :sad:')
-		expect:
+		except:
 			st.warning('This file is broken')
 	
 	
