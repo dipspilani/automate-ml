@@ -6,7 +6,7 @@ import numpy as np
 import base64
 import PIL
 from PIL import Image
-from io import BytesIO
+from io import BytesIO,StringIO
 import random
 import skimage
 import nltk
@@ -112,7 +112,18 @@ if mode == "Code":
 if mode=="Preprocess Text":
 	st.header('Upload Text File Here')
 	data = st.file_uploader(label="Select File (.txt)" , type=['txt'])
-	pass
+	if data is not  None:
+		try:
+			text = StringIO(data.decode("utf-8"))
+			text = text.read()
+			checkbox = st.checkbox('Show first few lines')
+			if checkbox:
+				try:
+					st.write(text[:30])
+				except:
+					st.warning('Can not show; somthing wrong! :sad:')
+		expect:
+			st.warning('This file is broken')
 	
 	
 
