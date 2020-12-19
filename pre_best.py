@@ -117,7 +117,8 @@ if mode=="Preprocess Text":
 		butt = st.button(label = 'Send for processing')
 		if butt:
 			text_lower = text.lower()
-			st.write(text_lower)
+			text_no_punc = re.sub(r'[^\w\s]', '', test_lower)
+			st.write(text_no_punc)
 	
 	
 	
