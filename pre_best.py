@@ -119,7 +119,12 @@ if mode=="Preprocess Text":
 		if butt:
 			text_lower = text.lower()
 			text_no_punc = re.sub(r'[^\w\s]', '', text_lower)
-			st.write(text_no_punc)
+			checkk = st.checkbox('Show text with punctuations removed')
+			if checkk:
+				try:
+					st.write(text_no_punc)
+				except:
+					st.warning('Cannot display :{{')
 	
 	
 	
