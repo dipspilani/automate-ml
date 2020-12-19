@@ -16,6 +16,7 @@ from textblob import TextBlob
 import re
 from nltk.corpus import stopwords
 nltk.download('punkt')
+nltk.download('maxent_ne_chunker')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
