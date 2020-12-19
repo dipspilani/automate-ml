@@ -123,24 +123,29 @@ if mode=="Preprocess Text":
 		butt = st.button(label = 'Send for processing')
 		if butt:
 			from nltk.stem.porter import PorterStemmer
+			from nltk.stem import WordNetLemmatizer
 			text_lower = text.lower()
 			text_no_punc = re.sub(r'[^\w\s]', '', text_lower)
 			st.info('Text with punctuations removed')
 			st.write(text_no_punc)
 			tokens = nltk.word_tokenize(text_no_punc)
 			st.info('Tokens')
-			st.write(set(tokens))
+			st.write(tokens)
 			tagged = nltk.pos_tag(tokens)
 			st.info('Part of Speech Tags')
-			st.write(set(tagged))
+			st.write(tagged)
 			stop_words = stopwords.words('english')
 			filtered_words = [word for word in tokens if word not in stop_words]
 			st.info('Stop Words removed')
-			st.write(set(filtered_words))
+			st.write(filtered_words)
 			porter = PorterStemmer()
 			stemmed = [porter.stem(word) for word in filtered_words]
 			st.info('Stemmed words')
-			st.write(set(stemmed))
+			st.write(stemmed)
+			lemmatizer=WordNetLemmatizer()
+			lemm = [lemmatizer.lemmatize(word) for word in filtered_words]
+			st.info('Lemmatized words')
+			st.write(lemm)
 			
 				
 	
