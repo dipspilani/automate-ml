@@ -11,6 +11,7 @@ import random
 import skimage
 import nltk
 import textblob
+import tkinter
 from textblob import TextBlob
 import re
 from nltk.corpus import stopwords
@@ -152,7 +153,9 @@ if mode=="Preprocess Text":
 			reg_exp = "NP: {<DT>?<JJ>*<NN>}"
 			rp = nltk.RegexpParser(reg_exp)
 			result = rp.parse(result.tags)
-			result.draw()
+			checkk = st.checkbox('Show parse tree')
+			if checkk:
+				result.draw()
 			
 				
 	
