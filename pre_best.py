@@ -124,7 +124,7 @@ if mode=="Preprocess Text":
 			st.write(text_no_punc)
 			tokens = nltk.word_tokenize(text_no_punc)
 			st.info('Tokens')
-			st.write(set(text_no_punc))
+			st.write(set(tokens))
 				
 	
 	
