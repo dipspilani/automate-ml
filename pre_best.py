@@ -114,11 +114,10 @@ st.sidebar.info('4. Use Preprocess Images for image data (jpg,png,gif)')
 st.sidebar.info('5. Use Preprocess Text for image textual data')
 st.sidebar.info('6. Select "Choose Best Model and get yourself the best model based on desired strategy and code for the same!')
 fb = st.sidebar.text_area('Your feedback or suggestions or maybe if you just want to wish me a good day :)')
-if fb:
-	submit = st.button('Send')
-	if submit and fb:
-		ss = pd.DataFrame({'review':fb})
-		ss.to_csv('user_comments.csv' , mode = 'a' , header = False)
+submit = st.button('Send')
+if submit and fb:
+	ss = pd.DataFrame({'review':fb})
+	ss.to_csv('user_comments.csv' , mode = 'a' , header = False)
 if mode == "Code":
     st.balloons()
     st.write('https://github.com/dipspilani/automate-ml/')	
