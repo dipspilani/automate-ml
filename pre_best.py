@@ -116,7 +116,7 @@ st.sidebar.info('6. Select "Choose Best Model and get yourself the best model ba
 fb = st.sidebar.text_area('Your feedback or suggestions or maybe if you just want to wish me a good day :)')
 submit = st.sidebar.button('Send')
 if submit and fb:
-	with open('user_comments1.txt' , 'w') as f
+	f = open('user_comments1.txt' , 'w')
 	f.write(fb)
 	
 if mode == "Code":
