@@ -114,7 +114,9 @@ if mode=="Preprocess Text":
 	st.header('Enter Text Here')
 	if num_words:
 		text = st.text_area(label = "Text Box" , height = min(200,num_words))
-		butt = st.button(label = 'Send for processing')		    
+		butt = st.button(label = 'Send for processing')
+		if butt:
+			text_lower = text.lower()
 	
 	
 	
