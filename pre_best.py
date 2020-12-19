@@ -116,9 +116,9 @@ st.sidebar.info('6. Select "Choose Best Model and get yourself the best model ba
 fb = st.sidebar.text_area('Your feedback or suggestions or maybe if you just want to wish me a good day :)')
 submit = st.sidebar.button('Send')
 if submit and fb:
-	obj = open('user_comments.txt' , 'a')
-	obj.write(fb)
-	obj.close()
+	with open('user_comments1.txt' , 'w') as f
+	f.write(fb)
+	
 if mode == "Code":
     st.balloons()
     st.write('https://github.com/dipspilani/automate-ml/')	
