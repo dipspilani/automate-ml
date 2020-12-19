@@ -125,6 +125,9 @@ if mode=="Preprocess Text":
 			tokens = nltk.word_tokenize(text_no_punc)
 			st.info('Tokens')
 			st.write(set(tokens))
+			tagged = nltk.pos_tag(tokens)
+			st.info('Part of Speech Tags')
+			st.write(set(tagged))
 				
 	
 	
