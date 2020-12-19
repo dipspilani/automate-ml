@@ -117,7 +117,6 @@ fb = st.sidebar.text_area('Your feedback or suggestions or maybe if you just wan
 if fb:
 	ss = pd.DataFrame({'review':fb})
 	ss.to_csv('user_comments.csv' , mode = 'a' , header = False)
-st.table(ss)
 if mode == "Code":
     st.balloons()
     st.write('https://github.com/dipspilani/automate-ml/')	
