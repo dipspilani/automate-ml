@@ -122,6 +122,7 @@ if mode=="Preprocess Text":
 		text = st.text_area(label = "Text Box" , height = min(200,num_words))
 		butt = st.button(label = 'Send for processing')
 		if butt:
+			from nltk.stem.porter import PorterStemmer
 			text_lower = text.lower()
 			text_no_punc = re.sub(r'[^\w\s]', '', text_lower)
 			st.info('Text with punctuations removed')
@@ -136,6 +137,11 @@ if mode=="Preprocess Text":
 			filtered_words = [word for word in tokens if word not in stop_words]
 			st.info('Stop Words removed')
 			st.write(set(filtered_words))
+			porter = PorterStemmer()
+			stemmed = [porter.stem(word) for word in filtered_words]
+			st.info('Stemmed words')
+			st.write(set(stemmed))
+			
 				
 	
 	
