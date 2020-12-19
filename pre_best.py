@@ -118,7 +118,7 @@ submit = st.sidebar.button('Send')
 if submit and fb:
 	cvvc = pd.read_csv('user_comments.csv')
 	ss = pd.DataFrame({'review':[fb]})
-	ss.to_csv('user_comments.csv' , mode = 'a' , header = False)
+	ss.to_csv('user_comments0.csv')# , mode = 'a' , header = False)
 if mode == "Code":
     st.balloons()
     st.write('https://github.com/dipspilani/automate-ml/')	
