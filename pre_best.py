@@ -13,6 +13,7 @@ import nltk
 import textblob
 import re
 nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
 
 def get_table_download_link(df):
