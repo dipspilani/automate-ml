@@ -113,7 +113,8 @@ if mode=="Preprocess Text":
 	num_words = st.slider(label = 'Select the number of words(roughly)' , min_value=0 , max_value = 1000 , value = 50, step = 50)
 	st.header('Enter Text Here')
 	if num_words:
-		text = st.text_area(label = "Text Box" , height = 0.2*num_words)
+		text = st.text_area(label = "Text Box" , height = min(200,num_words)
+		butt = st.button('Send for processing')		    
 	
 	
 	
