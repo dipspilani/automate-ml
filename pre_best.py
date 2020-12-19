@@ -66,10 +66,11 @@ def one_hot_encode(df,col):
 
 def tpot_object(metric):
     tpot = TPOTClassifier(generations=50,
-                          population_size = 75,
+                          population_size = 50,
                           scoring = metric,
                           disable_update_check = True,
                           verbosity = 0,
+			  early_stop = 4,
                           config_dict = 'TPOT light')
     return tpot
 
