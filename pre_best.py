@@ -12,6 +12,7 @@ import skimage
 import nltk
 import textblob
 import re
+nltk.download('punkt')
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
 
 def get_table_download_link(df):
