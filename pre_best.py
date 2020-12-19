@@ -15,6 +15,7 @@ import re
 from nltk.corpus import stopwords
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
