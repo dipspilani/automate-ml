@@ -148,7 +148,7 @@ if mode=="Preprocess Text":
 			lemm = [lemmatizer.lemmatize(word) for word in filtered_words]
 			st.info('Lemmatized words')
 			st.write(lemm)
-			result = TextBlob(filtered_words)
+			result = TextBlob(" ".join(filtered_words))
 			reg_exp = "NP: {<DT>?<JJ>*<NN>}"
 			rp = nltk.RegexpParser(reg_exp)
 			result = rp.parse(result.tags)
