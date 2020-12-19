@@ -153,8 +153,8 @@ if mode=="Preprocess Text":
 			rp = nltk.RegexpParser(reg_exp)
 			result = rp.parse(result.tags)
 			yo = st.button('Show Parse Tree')
-				if yo:
-					result.draw()
+			if yo:
+				result.draw()
 			
 				
 	
