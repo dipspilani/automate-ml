@@ -127,6 +127,8 @@ if mode=="Preprocess Text":
 		if butt:
 			from nltk.stem.porter import PorterStemmer
 			from nltk.stem import WordNetLemmatizer
+			from nltk.tokenize import word_tokenize 
+			from nltk import pos_tag, ne_chunk 
 			text_lower = text.lower()
 			text_no_punc = re.sub(r'[^\w\s]', '', text_lower)
 			st.info('Text with punctuations removed')
@@ -149,11 +151,10 @@ if mode=="Preprocess Text":
 			lemm = [lemmatizer.lemmatize(word) for word in filtered_words]
 			st.info('Lemmatized words')
 			st.write(" ".join(lemm))
-			result = TextBlob(" ".join(filtered_words))
-			reg_exp = "NP: {<DT>?<JJ>*<NN>}"
-			rp = nltk.RegexpParser(reg_exp)
-			result = rp.parse(result.tags)
-			result.draw()
+			st.info('Named entity recognition')
+			st.write(ne_chunk(tagged))
+			
+			
 			
 				
 	
