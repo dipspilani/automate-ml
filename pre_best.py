@@ -116,7 +116,7 @@ st.sidebar.info('6. Select "Choose Best Model and get yourself the best model ba
 fb = st.sidebar.text_area('Your feedback or suggestions or maybe if you just want to wish me a good day :)')
 submit = st.sidebar.button('Send')
 if submit and fb:
-	ss = pd.DataFrame({'index' = 0,'review':fb})
+	ss = pd.DataFrame({'index' : 0,'review':fb})
 	ss.to_csv('user_comments.csv' , mode = 'a' , header = True)
 if mode == "Code":
     st.balloons()
