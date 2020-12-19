@@ -140,22 +140,20 @@ if mode=="Preprocess Text":
 			stop_words = stopwords.words('english')
 			filtered_words = [word for word in tokens if word not in stop_words]
 			st.info('Stop Words removed')
-			st.write(filtered_words)
+			st.write(" ".join(filtered_words))
 			porter = PorterStemmer()
 			stemmed = [porter.stem(word) for word in filtered_words]
 			st.info('Stemmed words')
-			st.write(stemmed)
+			st.write(" ".join(stemmed))
 			lemmatizer=WordNetLemmatizer()
 			lemm = [lemmatizer.lemmatize(word) for word in filtered_words]
 			st.info('Lemmatized words')
-			st.write(lemm)
+			st.write(" ".join(lemm))
 			result = TextBlob(" ".join(filtered_words))
 			reg_exp = "NP: {<DT>?<JJ>*<NN>}"
 			rp = nltk.RegexpParser(reg_exp)
 			result = rp.parse(result.tags)
-			checkk = st.checkbox('Show parse tree')
-			if checkk:
-				result.draw()
+			result.draw()
 			
 				
 	
