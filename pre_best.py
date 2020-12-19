@@ -110,10 +110,9 @@ if mode == "Code":
 
 
 if mode=="Preprocess Text":
-	st.header('Upload Text File Here')
-	data = st.file_uploader(label="Select File (.txt)" , type=['txt'])
-	if data is not  None:
-		st.warning('Thos feature is not built yet :sad:')
+	st.header('Enter Text File Here')
+	text = st.text_area(label = "Text Box" , value = "" , height = 200)
+	
 	
 	
 
