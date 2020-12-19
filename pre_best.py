@@ -121,6 +121,9 @@ if mode=="Preprocess Text":
 			text_no_punc = re.sub(r'[^\w\s]', '', text_lower)
 			st.info('Text with punctuations removed')
 			st.write(text_no_punc)
+			tokens = nltk.word_tokenize(text_no_punc)
+			st.info('Tokens')
+			st.write(set(text_no_punc))
 				
 	
 	
