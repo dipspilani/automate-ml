@@ -110,7 +110,7 @@ if mode == "Code":
 
 
 if mode=="Preprocess Text":
-	num_words = st.slider(label = 'Select the number of words(roughly)' , min_value=5 , max_value = 1000 , value = 10, step = 50)
+	num_words = st.slider(label = 'Select the number of words(roughly)' , min_value=0 , max_value = 1000 , value = 50, step = 50)
 	st.header('Enter Text File Here')
 	text = st.text_area(label = "Text Box" , height = 200)
 	
