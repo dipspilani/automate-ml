@@ -94,7 +94,7 @@ def rob_scaler():
 
 
 st.set_page_config(page_title='Preprocess data and get the best Sci-kit learn model' , page_icon = ':bar_chart:' , layout='wide', initial_sidebar_state='expanded')
-st.title("Extensive data and image preprocessing tool and optimal sci-kit learn pipeline chooser :bar_chart:")
+st.title("Extensive data/image/text preprocessing tool and optimal sci-kit learn pipeline chooser :bar_chart:")
 st.sidebar.title("Menu")
 st.markdown("This application is a Streamlit dashboard used "
             "for **preprocessing data and automating optimal sci-kit learn model choice(s) (+ code for the same!)**")
@@ -112,7 +112,6 @@ st.sidebar.info('3. Use Preprocess-2 for scaling/normalizing')
 st.sidebar.info('4. Use Preprocess Images for image data (jpg,png,gif)')
 st.sidebar.info('5. Use Preprocess Text for image textual data')
 st.sidebar.info('6. Select "Choose Best Model and get yourself the best model based on desired strategy and code for the same!')
-st.sidebar.info('**Next Up:** Text Preprocessing')
 if mode == "Code":
     st.balloons()
     st.write('https://github.com/dipspilani/automate-ml/')	
