@@ -118,6 +118,7 @@ submit = st.sidebar.button('Send')
 if submit and fb:
 	f = open('user_comments1.txt' , 'w')
 	f.write(fb)
+	fb = ""
 	
 if mode == "Code":
     st.balloons()
