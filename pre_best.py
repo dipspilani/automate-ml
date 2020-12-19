@@ -12,8 +12,10 @@ import skimage
 import nltk
 import textblob
 import re
+from nltk.corpus import stopwords
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
+
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
 
 def get_table_download_link(df):
@@ -129,6 +131,10 @@ if mode=="Preprocess Text":
 			tagged = nltk.pos_tag(tokens)
 			st.info('Part of Speech Tags')
 			st.write(set(tagged))
+			stop_words = stopwords.words('english')
+			filtered_words = [word for word in tokens if word not in stop_words]
+			st.info('Stop Words removed')
+			st.write(set(filtered_words))
 				
 	
 	
