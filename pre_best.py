@@ -608,7 +608,7 @@ elif mode=='Get Best Model and its code':
                 y = dataset.loc[:,[target]]
                 scoring = ['None' , 'accuracy','average_precision', 'balanced_accuracy', 'f1', 'f1_macro', 'f1_micro', 'precision'  , 'recall' ,'roc_auc']
                 metric = st.selectbox('Choose scoring metric' , scoring)
-                st.info('Estimated wait time : 8-12 minutes')
+                st.info('Estimated wait time : 8-12 minutes for small to medium datasets. 15-20 minutes for large datasets')
                 if metric != 'None':
                     try:
                         with st.spinner('Finding the best preprocessing steps and sci-kit learn algorithm... :hourglass:'):
