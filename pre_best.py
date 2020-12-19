@@ -117,6 +117,7 @@ if mode=="Preprocess Text":
 		butt = st.button(label = 'Send for processing')
 		if butt:
 			text_lower = text.lower()
+			st.write(text_lower)
 	
 	
 	
