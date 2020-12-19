@@ -11,7 +11,7 @@ import random
 import skimage
 import nltk
 import textblob
-import tkinter
+
 from textblob import TextBlob
 import re
 from nltk.corpus import stopwords
