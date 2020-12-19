@@ -149,7 +149,7 @@ if mode=="Preprocess Text":
 			st.info('Lemmatized words')
 			st.write(lemm)
 			result = TextBlob(filtered_words)
-			reg_exp = “NP: {<DT>?<JJ>*<NN>}”
+			reg_exp = "NP: {<DT>?<JJ>*<NN>}"
 			rp = nltk.RegexpParser(reg_exp)
 			result = rp.parse(result.tags)
 			st.image(result.draw())
