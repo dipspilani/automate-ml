@@ -152,7 +152,7 @@ if mode=="Preprocess Text":
 			reg_exp = “NP: {<DT>?<JJ>*<NN>}”
 			rp = nltk.RegexpParser(reg_exp)
 			result = rp.parse(result.tags)
-			st.image(result.draw)
+			st.image(result.draw())
 			
 				
 	
