@@ -19,6 +19,7 @@ nltk.download('punkt')
 nltk.download('maxent_ne_chunker')
 nltk.download('stopwords')
 nltk.download('wordnet')
+nltk.download('words')
 nltk.download('averaged_perceptron_tagger')
 
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
