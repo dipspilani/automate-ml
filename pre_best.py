@@ -113,6 +113,7 @@ st.sidebar.info('3. Use Preprocess-2 for scaling/normalizing')
 st.sidebar.info('4. Use Preprocess Images for image data (jpg,png,gif)')
 st.sidebar.info('5. Use Preprocess Text for image textual data')
 st.sidebar.info('6. Select "Choose Best Model and get yourself the best model based on desired strategy and code for the same!')
+st.sidebar.info('**Next Up:** Data Visualization')
 fb = st.sidebar.text_area('Your feedback or suggestions or maybe if you just want to wish me a good day :)')
 submit = st.sidebar.button('Send')
 if submit and fb:
