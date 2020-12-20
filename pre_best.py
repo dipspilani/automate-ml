@@ -119,19 +119,7 @@ if submit and fb:
 	f = open('user_comments1.txt' , 'w')
 	f.write(fb)
 	fb = ""
-if mode=='Visualize and Cluster data':
-    st.header('Upload Data Here')
-    data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx','data'])
-    if data is not None:
-        try:
-            dataset = pd.read_csv(data)
-            st.success('File Uploaded Sucessfully')
-            x = st.checkbox('Show head of the dataset')
-            if x:
-                st.table(dataset.head())
 
-	
-	
 	
 #st.header('Upload Data Here')
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
