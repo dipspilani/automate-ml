@@ -131,7 +131,6 @@ if mode=='Visualize and Cluster data':
                 st.table(dataset.head())
         except:
             st.write('Please choose a valid file')
-	
 	choice = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
 	if choice == 'PairPlot':
 		try:
