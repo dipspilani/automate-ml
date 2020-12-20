@@ -128,16 +128,17 @@ if mode=='Visualize and Cluster data':
             st.success('File Uploaded Sucessfully')
             x = st.checkbox('Show head of the dataset')
             if x:
-                st.table(dataset.head())
-        except:
-            st.write('Please choose a valid file')
-	
-	choice = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
-	if choice == 'PairPlot':
+                st.table(dataset.head())'
+	    choice = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
+	    if choice == 'PairPlot':
 		try:
 			st.pyplot(sns.pairplot(data))
 		except:
 			st.error('Something went wrong!')
+        except:
+            st.write('Please choose a valid file')
+	
+	
 	
 #st.header('Upload Data Here')
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
