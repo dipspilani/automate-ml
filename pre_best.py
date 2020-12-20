@@ -128,7 +128,7 @@ if mode=='Visualize and Cluster data':
             st.success('File Uploaded Sucessfully')
             x = st.checkbox('Show head of the dataset')
             if x:
-                st.table(dataset.head())'
+                st.table(dataset.head())
 	    choice = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
 	    if choice == 'PairPlot':
 		try:
