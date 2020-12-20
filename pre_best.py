@@ -129,8 +129,8 @@ if mode=='Visualize and Cluster data':
             x = st.checkbox('Show head of the dataset')
             if x:
                 st.table(dataset.head())
-	    choice = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
-	    if choice == 'PairPlot':
+		choicex = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
+	    if choicex == 'PairPlot':
 		try:
 			st.pyplot(sns.pairplot(data))
 		except:
