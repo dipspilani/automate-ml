@@ -11,7 +11,7 @@ import random
 import skimage
 import nltk
 import textblob
-
+import seaborn as sns
 from textblob import TextBlob
 import re
 from nltk.corpus import stopwords
@@ -104,7 +104,7 @@ st.markdown('**Deployed and Maintained by Dipanshu Prasad - https://github.com/d
 
 
 st.sidebar.subheader('Select Mode')
-mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image','Preprocess Text', 'Get Best Model and its code','Visualize data'))
+mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image','Preprocess Text', 'Get Best Model and its code','Visualize and Cluster data'))
 st.sidebar.subheader('Steps to use the tool:')
 
 st.sidebar.info('1. Use Preprocess-1 for missing values and label/one-hot encoding')
@@ -119,7 +119,7 @@ if submit and fb:
 	f = open('user_comments1.txt' , 'w')
 	f.write(fb)
 	fb = ""
-if mode=='Visualize data':
+if mode=='Visualize and Cluster data':
     st.header('Upload Data Here')
     data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx' , 'data'])
     if data is not None:
@@ -130,7 +130,14 @@ if mode=='Visualize data':
             if x:
                 st.table(dataset.head())
         except:
-            st.write('Please choose a valid file')	
+            st.write('Please choose a valid file')
+	
+	choice = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
+	if choice == 'PairPlot':
+		try:
+			st.pyplot(sns.pairplot(data))
+		except:
+			st.error('Something went wrong!')
 	
 #st.header('Upload Data Here')
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
