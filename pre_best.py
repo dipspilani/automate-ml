@@ -104,7 +104,7 @@ st.markdown('**Deployed and Maintained by Dipanshu Prasad - https://github.com/d
 
 
 st.sidebar.subheader('Select Mode')
-mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image','Preprocess Text', 'Get Best Model and its code','Code'))
+mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image','Preprocess Text', 'Get Best Model and its code','Visualize data'))
 st.sidebar.subheader('Steps to use the tool:')
 
 st.sidebar.info('1. Use Preprocess-1 for missing values and label/one-hot encoding')
@@ -119,10 +119,19 @@ if submit and fb:
 	f = open('user_comments1.txt' , 'w')
 	f.write(fb)
 	fb = ""
+if mode=='Visualize data':
+    st.header('Upload Data Here')
+    data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx' , 'data'])
+    if data is not None:
+        try:
+            dataset = pd.read_csv(data)
+            st.success('File Uploaded Sucessfully')
+            x = st.checkbox('Show head of the dataset')
+            if x:
+                st.table(dataset.head())
+        except:
+            st.write('Please choose a valid file')	
 	
-if mode == "Code":
-    st.balloons()
-    st.write('https://github.com/dipspilani/automate-ml/')	
 #st.header('Upload Data Here')
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
 
@@ -167,36 +176,6 @@ if mode=="Preprocess Text":
 			
 				
 	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if mode=="Preprocess Image":
