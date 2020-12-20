@@ -121,7 +121,7 @@ if submit and fb:
 	fb = ""
 if mode=='Visualize and Cluster data':
     st.header('Upload Data Here')
-    data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx' , 'data'])
+    data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx','data'])
     if data is not None:
         try:
             dataset = pd.read_csv(data)
@@ -129,7 +129,8 @@ if mode=='Visualize and Cluster data':
             x = st.checkbox('Show head of the dataset')
             if x:
                 st.table(dataset.head())
-		choicex = st.selectbox('Choose Operation' , ['PairPlot','2-D visualisation','1-D distribution','PCA','NMF','t-SNE','Clusterize'])
+	    
+	    choicex=='PairPlot'
 	    if choicex == 'PairPlot':
 		try:
 			st.pyplot(sns.pairplot(data))
