@@ -126,6 +126,22 @@ if submit and fb:
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
 
 
+if mode=='Visualize and Cluster data':
+	st.header('Upload data here')
+	data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx' , 'data'])
+	if data is not None:
+		try:
+			dataset = pd.read_csv(data)
+			st.success('Data Uploaded Sucessfully')
+			x = st.checkbox('Show head of dataset')
+			if x:
+				st.table(dataset.head())
+			st.pyplot(sns.pairplot(dataset))	
+		except:
+			st.error('Please choose a valid file!')
+
+
+
 if mode=="Preprocess Text":
 	num_words = st.slider(label = 'Select the number of words(roughly)' , min_value=0 , max_value = 1000 , value = 50, step = 50)
 	st.header('Enter Text Here')
