@@ -129,12 +129,7 @@ if mode=='Visualize and Cluster data':
             x = st.checkbox('Show head of the dataset')
             if x:
                 st.table(dataset.head())
-		try:
-			st.pyplot(sns.pairplot(data))
-		except:
-			st.error('Something went wrong!')
-        except:
-            st.write('Please choose a valid file')
+
 	
 	
 	
