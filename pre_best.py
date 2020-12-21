@@ -155,7 +155,8 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				try:
 					with st.spinner('Finding t-SNE components... :hourglass:'):
 						x = ts.fit(dataset)
-						st.write(type(x))
+						xc = x[:,0]
+						st.write(type(xc))
 						#x = pd.DataFrame(x)
 						#st.markdown(get_table_download_link(x), unsafe_allow_html=True)
 						#st.info('t-SNE values')
