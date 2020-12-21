@@ -156,7 +156,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				for i in comps:
 					st.write('Variance explained by Principal Component '+str(k) , np.round(i,5))
 					k+=1
-				inp = st.number_input('Enter the number of components to use' , value = 0 , min_value = 1,max_value = k-1)
+				inp = st.number_input('Enter the number of components to use' , value = 0 , min_value = 0,max_value = k-1)
 				if inp!=0:
 					st.write('Processing')
 			
