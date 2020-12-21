@@ -140,6 +140,12 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 			if x:
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
+			if choice=='Clusterize data':
+				cho = st.selectbox('Choose clusterizing strategy',['K-Means','Agglomerative','DBSCAN'])
+				
+			
+			
+			
 			if choice=='t-SNE':
 				st.info('All non-numeric columns will automatically be dropped')
 				cols = list(dataset.columns)
@@ -160,7 +166,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						st.info('t-SNE values')
 						st.dataframe(x.head())
 				except:
-					st.erorr('Something went wrong!!')
+					st.error('Something went wrong!!')
 			
 			
 			
