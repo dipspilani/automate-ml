@@ -147,7 +147,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				except:
 					st.error('Something went wrong')
 			if choice=='3-D Visualization':
-				st.info('Selection of non-numeric columns will lead to errors')
+				st.info('Selection of more than 2 non-numeric columns may lead to errors')
 				try:	
 					cols = list(dataset.columns)
 					choice1 = st.selectbox('Choose X-axis',cols)
