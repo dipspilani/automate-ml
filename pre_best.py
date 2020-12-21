@@ -153,7 +153,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if cx:
 					try:
 						dataset[cx] = dataset[cx].astype(float)
-						st.pyplot(sns.barplot(dataset[cx]))
+						st.pyplot(sns.barplot(y=dataset[cx]))
 					except:
 						st.warning('Non-numeric column')
 						st.plotly_chart(px.scatter(dataset,x=cx))
