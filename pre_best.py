@@ -150,6 +150,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						dataset.drop(columns = [i],inplace=True)
 				from sklearn.decomposition import PCA
 				pca = PCA()
+				
 				x = pca.fit_transform(dataset)
 				comps = pca.explained_variance_ratio_
 				k=1
@@ -160,6 +161,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if inp!=0:
 					pca = PCA(n_components = inp)
 					x = pca.fit_transform(dataset)
+					st.write(type(x))
 					st.markdown(get_table_download_link(x), unsafe_allow_html=True)
 					st.table(x.head())
 					
