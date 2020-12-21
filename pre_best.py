@@ -140,6 +140,28 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 			if x:
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
+			if choice=='t-SNE':
+				st.info('All non-numeric columns will automatically be dropped')
+				cols = list(dataset.columns)
+				for i in cols:
+					try:
+						dataset[i] = dataset[i].astype(float)
+					except:
+						dataset.drop(columns = [i],inplace=True)
+				from sklearn.manifold import TSNE
+				ts = TSNE()
+				try:
+					with st.spinner('Finding t-SNE components... :hourglass:'):
+						x = ts.fit(dataset)
+						x = pd.DataFrame(x)
+						st.markdown(get_table_download_link(x), unsafe_allow_html=True)
+						st.info('t-SNE values')
+						st.dataframe(x.head())
+				except:
+					st.erorr('Something went wrong!!')
+			
+			
+			
 			if choice=='NMF':
 				st.info('NMF requires that all values be non-negative. All non-numeric columns will automatically be dropped')
 				cols = list(dataset.columns)
