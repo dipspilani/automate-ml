@@ -157,6 +157,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						try:
 							km = KMeans(n_clusters=clus)
 							y = km.fit_predict(dataset)
+							st.write(type(y))
 							#y = pd.DataFrame(y)
 							#dataset['cluster']=y
 							#if len(dataset.columns)==3:
