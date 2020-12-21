@@ -159,12 +159,21 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 					k+=1
 				inp = st.number_input('Enter the number of components to use' , value = 0 , min_value = 0,max_value = k-1)
 				if inp!=0:
-					pca = PCA(n_components = inp,whiten = True)
-					x = pca.fit_transform(dataset)
-					x = pd.DataFrame(x)
-					st.markdown(get_table_download_link(x), unsafe_allow_html=True)
-					st.info('Scaled Principal Component values')
-					st.table(x.head())
+					chk = st.checkbox('Scale PC values')
+					if chk:
+						pca = PCA(n_components = inp,whiten = True)
+						x = pca.fit_transform(dataset)
+						x = pd.DataFrame(x)
+						st.markdown(get_table_download_link(x), unsafe_allow_html=True)
+						st.info('Scaled Principal Component values')
+						st.table(x.head())
+					else:
+						pca = PCA(n_components = inp)
+						x = pca.fit_transform(dataset)
+						x = pd.DataFrame(x)
+						st.markdown(get_table_download_link(x), unsafe_allow_html=True)
+						st.info('Principal Component values')
+						st.table(x.head())
 					
 			
 			if choice=='PairPlot':
