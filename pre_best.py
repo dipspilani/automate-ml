@@ -140,6 +140,12 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 			if x:
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
+			if choice=='PCA':
+				from sklearn.decomposition import PCA
+				pca = PCA()
+				x = pca.fit_transform(dataset)
+				st.write(pca.explained_variance_ratio_)
+			
 			if choice=='PairPlot':
 				try:
 					with st.spinner('Creating pairplot... :hourglass:'):
