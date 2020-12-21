@@ -142,7 +142,8 @@ if mode=='Visualize and Cluster data':
 			choice = st.selectbox('Choose Operation',['None','PairPlot','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
 			if choice=='PairPlot':
 				try:
-					st.pyplot(sns.pairplot(dataset))
+					with st.spinner('Creating pairplot... :hourglass:')
+						st.pyplot(sns.pairplot(dataset))
 				except:
 					st.error('Something went wrong')
 			if choice=='2-D visualization':
