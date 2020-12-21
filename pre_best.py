@@ -172,8 +172,10 @@ if mode=='Visualize and Cluster data':
 										st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 								except:
 									st.warning('This column does not have numeric values')
+									st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 						except:
 							st.warning('This column does not have numeric values')
+							st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 				except:
 					st.warning('Something went wrong!')
 		except:
