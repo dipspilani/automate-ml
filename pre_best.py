@@ -147,6 +147,7 @@ if mode=='Visualize and Cluster data':
 				except:
 					st.error('Something went wrong')
 			if choice=='2-D visualization':
+				st.info('Choose X-axis as numerical, Y-axis may or may not be numerical')
 				try:
 					cols = list(dataset.columns)
 					choice1 = st.selectbox('Choose X-axis',cols)
@@ -175,7 +176,6 @@ if mode=='Visualize and Cluster data':
 									st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 						except:
 							st.warning('This column does not have numeric values')
-							st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 				except:
 					st.warning('Something went wrong!')
 		except:
