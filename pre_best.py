@@ -166,7 +166,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 								choice3 = st.selectbox('Choose Z-axis',cols)
 								if choice3:
 									try:
-										dataset[choice23 = dataset[choice3].astype(float)
+										dataset[choice3] = dataset[choice3].astype(float)
 									except:
 										st.warning('This is a non-numeric column')
 									
