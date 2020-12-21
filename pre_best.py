@@ -14,6 +14,8 @@ import textblob
 import seaborn as sns
 from textblob import TextBlob
 import re
+import plotly
+import plotly.express as px
 from nltk.corpus import stopwords
 nltk.download('punkt')
 nltk.download('maxent_ne_chunker')
@@ -127,6 +129,7 @@ if submit and fb:
 
 
 if mode=='Visualize and Cluster data':
+	st.info('Fix any missing values to avoid erorrs')
 	st.header('Upload data here')
 	data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx' , 'data'])
 	if data is not None:
@@ -136,12 +139,43 @@ if mode=='Visualize and Cluster data':
 			x = st.checkbox('Show head of dataset')
 			if x:
 				st.table(dataset.head())
-			choice = st.selectbox('Choose Operation',['PairPlot'])
+			choice = st.selectbox('Choose Operation',['None','PairPlot','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
 			if choice=='PairPlot':
 				try:
 					st.pyplot(sns.pairplot(dataset))
 				except:
 					st.error('Something went wrong')
+			if choice=='2-D visualization':
+				try:
+					cols = list(dataset.columns)
+					choice1 = st.selectbox('Choose X-axis',cols)
+					if choice1:
+						cols.remove(choice1)
+						try:
+							dataset[choice1] = dataset[choice1].astype(float)
+							choice2 = st.selectbox('Choose Y-axis',cols)
+							if choice2:
+								cols.remove(choice2)
+								try:
+									dataset[choice2]=dataset[choice2].astype(float)
+									huec = st.checkbox('Add hue')
+									if huec:
+										hue = st.selectbox('Choose hue',cols)
+										if hue:
+											try:
+												st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2,color=hue))
+											except:
+												st.warning('SOmething went wrong, hue not used')
+												st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
+									else:
+										st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
+								except:
+									st.warning('This column does not have numeric values')
+						except:
+							st.warning('This column does not have numeric values')
+											
+							
+							
 		except:
 			st.error('Please choose a valid file!')
 
