@@ -146,9 +146,10 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						st.pyplot(sns.pairplot(dataset))
 				except:
 					st.error('Something went wrong')
-			if choice=='3-D	Visualization':
-				cols = list(dataset.columns)
+			if choice=='3-D Visualization':
+				st.info('Selection of non-numeric columns will lead to errors')
 				try:	
+					cols = list(dataset.columns)
 					choice1 = st.selectbox('Choose X-axis',cols)
 					if choice1:
 							cols.remove(choice1)
