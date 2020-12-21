@@ -156,6 +156,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						st.plotly_chart(px.scatter(dataset,x=cx))
 					except:
 						st.warning('Non-numeric column')
+						st.plotly_chart(px.scatter(dataset,x=cx))
 			if choice=='3-D Visualization':
 				st.info('Selection of more than 2 non-numeric columns may lead to errors')
 				try:	
