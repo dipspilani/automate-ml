@@ -141,10 +141,16 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
 			if choice=='PCA':
-				dataset1 = dataset.iloc[:,[1,2,3,4]]
+				st.info('PCA requires that all values be in numeric form. Hence, all non-numeric columns are dropped here')
+				cols = list(dataset.columns)
+				for i in cols:
+					try:
+						dataset[i] = dataset[i].astype(float)
+					else:
+						dataset = dataset.drop(i)
 				from sklearn.decomposition import PCA
 				pca = PCA()
-				x = pca.fit_transform(dataset1)
+				x = pca.fit_transform(dataset)
 				st.write(pca.explained_variance_ratio_)
 			
 			if choice=='PairPlot':
