@@ -165,7 +165,7 @@ if mode=='Visualize and Cluster data':
 											try:
 												st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2,color=hue))
 											except:
-												st.warning('SOmething went wrong, hue not used')
+												st.warning('Something went wrong, hue not used')
 												st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 									else:
 										st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
