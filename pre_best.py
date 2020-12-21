@@ -148,8 +148,10 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						dataset[i] = dataset[i].astype(float)
 					except:
 						dataset.drop(columns = [i],inplace=True)
+				st.write('yo')		
 				from sklearn.manifold import TSNE
 				ts = TSNE()
+				st.write('yoyo')
 				try:
 					with st.spinner('Finding t-SNE components... :hourglass:'):
 						x = ts.fit(dataset)
