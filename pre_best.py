@@ -147,7 +147,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 					try:
 						dataset[i] = dataset[i].astype(float)
 					except:
-						dataset = dataset.drop(i)
+						dataset = dataset.drop([i])
 				from sklearn.decomposition import PCA
 				pca = PCA()
 				x = pca.fit_transform(dataset)
