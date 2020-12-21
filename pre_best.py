@@ -141,7 +141,27 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
 			if choice=='Clusterize data':
+				st.info('For visualizing clusterization, it is suggested that dimensions are reduced to 2-3. Else, you can also visualize by selection of 2-3 columns from the lot') ')
+				cols = list(dataset.columns)
+				for i in cols:
+					try:
+						dataset[i] = dataset[i].astype(float)
+					except:
+						dataset.drop(columns = [i],inplace=True)
 				cho = st.selectbox('Choose clusterizing strategy',['K-Means','Agglomerative','DBSCAN'])
+				if cho=='K-Means':
+					from sklearn.cluster import KMeans
+					clus = st.number_input('Enter number of clusters',value=0,min_value=0,max_value=len(dataset))
+					if clus!=0:
+						km = KMeans(n_clusters=clus)
+						y = km.fit_predict(dataset)
+						y = pd.DataFrame(y)
+						dataset['cluster']=y
+						if len(dataset.columns)==3:
+							st.plotply_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
+						else:
+							st.plotply_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
+						
 				
 			
 			
