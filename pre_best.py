@@ -173,7 +173,8 @@ if mode=='Visualize and Cluster data':
 									st.warning('This column does not have numeric values')
 						except:
 							st.warning('This column does not have numeric values')
-																
+				except:
+					st.warning('Something went wrong!')
 		except:
 			st.error('Please choose a valid file!')
 
