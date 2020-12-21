@@ -153,7 +153,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if cx:
 					try:
 						dataset[cx] = dataset[cx].astype(float)
-						st.plotly_chart(px.bar(dataset,x=list(range(len(dataset[cx]))y=cx))
+						st.plotly_chart(px.bar(dataset,x=list(range(len(dataset[cx])),y=cx))
 					except:
 						st.warning('Non-numeric column')
 			if choice=='3-D Visualization':
