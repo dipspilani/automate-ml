@@ -162,7 +162,18 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 							if len(dataset.columns)==3:
 								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
 							else:
-								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
+								cols = list(dataset.columns)
+								cols.remove('cluster')
+								c1 = st.selectbox('Choose X-axis for Kmeans visualization',cols)
+								cols.remove(c1)
+								c2 = st.selectbox('Choose Y-axis for Kmeans visualization',cols)
+								cols.remove(c2)
+								ck = st.checkbox('Show 3-D visualization')
+								if ck:
+									c3 = st.selectbox('Choose Z-axis for Kmeans visualization',cols)
+									st.plotly_chart(px.scatter_3d(dataset,x=c1,y=c2,z=c3,color='cluster'))
+								else:	
+									st.plotly_chart(px.scatter(dataset,x=c1,y=c2,color='cluster'))
 						except:
 							st.error('Something went wrong')
 				
