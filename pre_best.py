@@ -141,7 +141,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
 			if choice=='Clusterize data':
-				st.info('For visualizing clusterization, it is suggested that dimensions are reduced to 2-3. Else, you can also visualize by selection of 2-3 columns from the lot') ')
+				st.info('For visualizing clusterization, it is suggested that dimensions are reduced to 2-3. Else, you can also visualize by selection of 2-3 columns from the lot')
 				cols = list(dataset.columns)
 				for i in cols:
 					try:
