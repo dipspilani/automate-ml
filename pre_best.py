@@ -141,9 +141,10 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
 			if choice=='PCA':
+				dataset1 = dataset.iloc[:,[1,2,3,4]]
 				from sklearn.decomposition import PCA
 				pca = PCA()
-				x = pca.fit_transform(dataset)
+				x = pca.fit_transform(dataset1)
 				st.write(pca.explained_variance_ratio_)
 			
 			if choice=='PairPlot':
