@@ -97,10 +97,10 @@ def rob_scaler():
 
 
 st.set_page_config(page_title='Preprocess data and get the best Sci-kit learn model' , page_icon = ':bar_chart:' , layout='wide', initial_sidebar_state='expanded')
-st.title("Extensive data/image/text preprocessing tool and optimal sci-kit learn pipeline chooser :bar_chart:")
+st.title("Extensive data/image/text preprocessing-visualization tool and optimal sci-kit learn pipeline chooser :bar_chart:")
 st.sidebar.title("Menu")
 st.markdown("This application is a Streamlit dashboard used "
-            "for **preprocessing data and automating optimal sci-kit learn model choice(s) (+ code for the same!)**")
+            "for **preprocessing and visualizing data and automating optimal sci-kit learn model choice(s) (+ code for the same!)**")
 st.markdown('**Deployed and Maintained by Dipanshu Prasad - https://github.com/dipspilani**')
 
 
@@ -149,6 +149,34 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 					except:
 						dataset.drop(columns = [i],inplace=True)
 				cho = st.selectbox('Choose clusterizing strategy',['K-Means','Agglomerative','DBSCAN'])
+				if cho=='Agglomerative':
+					from sklearn.cluster import AgglomerativeClustering
+					clus = st.number_input('Enter number of clusters',value=0,min_value=0,max_value=len(dataset))
+					if clus!=0:
+						try:
+							km = AgglomerativeClustering(n_clusters=clus)
+							y = km.fit_predict(dataset)
+							y = pd.DataFrame(y)
+							dataset['cluster']=y
+							if len(dataset.columns)==3:
+								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
+							else:
+								cols = list(dataset.columns)
+								cols.remove('cluster')
+								c1 = st.selectbox('Choose X-axis for Kmeans visualization',cols)
+								cols.remove(c1)
+								c2 = st.selectbox('Choose Y-axis for Kmeans visualization',cols)
+								cols.remove(c2)
+								ck = st.checkbox('Show 3-D visualization')
+								if ck:
+									c3 = st.selectbox('Choose Z-axis for Kmeans visualization',cols)
+									st.plotly_chart(px.scatter_3d(dataset,x=c1,y=c2,z=c3,color='cluster'))
+								else:	
+									st.plotly_chart(px.scatter(dataset,x=c1,y=c2,color='cluster'))
+						except:
+							st.error('Something went wrong')	
+				
+				
 				if cho=='K-Means':
 					from sklearn.cluster import KMeans
 					clus = st.number_input('Enter number of clusters',value=0,min_value=0,max_value=len(dataset))
