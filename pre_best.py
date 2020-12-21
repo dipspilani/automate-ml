@@ -146,6 +146,16 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						st.pyplot(sns.pairplot(dataset))
 				except:
 					st.error('Something went wrong')
+			if choice=="1-D visualization":
+				st.info('Choose a numeric column only')
+				cols = list(dataset.columns)
+				cx = st.selectbox('Select column' , cols)
+				if cx:
+					try:
+						dataset[cx] = dataset[cx].astype(float)
+						st.plotly_chart(px.bar(dataset,x=cx))
+					except:
+						st.warning('Non-numeric column')
 			if choice=='3-D Visualization':
 				st.info('Selection of more than 2 non-numeric columns may lead to errors')
 				try:	
