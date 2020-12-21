@@ -153,7 +153,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if inp!=0:
 					nmf = NMF(n_components = inp)
 					try:
-						with st.spinner('Finding the NMF components... :hourglass_with_sand:'):
+						with st.spinner('Finding the NMF components... :hourglass:'):
 							x = nmf.fit_transform(dataset)
 							x = pd.DataFrame(x)
 							st.markdown(get_table_download_link(x), unsafe_allow_html=True)
