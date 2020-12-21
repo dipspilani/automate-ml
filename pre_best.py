@@ -140,6 +140,24 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 			if x:
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
+			if choice=='NMF':
+				st.info('NMF requires that all values be non-negative. All non-numeric columns will automatically be dropped')
+				cols = list(dataset.columns)
+				for i in cols:
+					try:
+						dataset[i] = dataset[i].astype(float)
+					except:
+						dataset.drop(columns = [i],inplace=True)
+				from sklearn.decomposition import NMF
+				inp = st.number_input('Enter the number of components to use' , value = 0 , min_value = 0,max_value = len(cols))
+				if inp!=0:
+					nmf = NMF(n_components = inp)
+					try:
+						x = nmf.fit_transform(dataset)
+						st.write(type(x))
+					except:
+						st.error('There are negative values in the dataset')
+			
 			if choice=='PCA':
 				st.info('PCA requires that all values be in numeric form. Hence, all non-numeric columns are dropped here')
 				cols = list(dataset.columns)
@@ -166,14 +184,14 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						x = pd.DataFrame(x)
 						st.markdown(get_table_download_link(x), unsafe_allow_html=True)
 						st.info('Scaled Principal Component values')
-						st.table(x.head())
+						st.dataframe(x.head())
 					else:
 						pca = PCA(n_components = inp)
 						x = pca.fit_transform(dataset)
 						x = pd.DataFrame(x)
 						st.markdown(get_table_download_link(x), unsafe_allow_html=True)
 						st.info('Principal Component values')
-						st.table(x.head())
+						st.dataframe(x.head())
 					
 			
 			if choice=='PairPlot':
