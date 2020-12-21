@@ -148,7 +148,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						dataset[i] = dataset[i].astype(float)
 					except:
 						dataset.drop(columns = [i],inplace=True)
-				cho = st.selectbox('Choose clusterizing strategy',['K-Means','Agglomerative','DBSCAN'])
+				cho = st.select_slider('Choose clusterizing strategy',['K-Means','Agglomerative','DBSCAN'])
 				if cho=='Agglomerative':
 					from sklearn.cluster import AgglomerativeClustering
 					clus = st.number_input('Enter number of clusters',value=0,min_value=0,max_value=len(dataset))
