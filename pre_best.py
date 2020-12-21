@@ -139,13 +139,47 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 			x = st.checkbox('Show head of dataset')
 			if x:
 				st.table(dataset.head())
-			choice = st.selectbox('Choose Operation',['None','PairPlot','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
+			choice = st.selectbox('Choose Operation',['None','PairPlot','3-D visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
 			if choice=='PairPlot':
 				try:
 					with st.spinner('Creating pairplot... :hourglass:'):
 						st.pyplot(sns.pairplot(dataset))
 				except:
 					st.error('Something went wrong')
+			if choice=='3-D	visualization':
+				cols = list(dataset.columns)
+				try:	
+					choice1 = st.selectbox('Choose X-axis',cols)
+						if choice1:
+							cols.remove(choice1)
+							try:
+								dataset[choice1] = dataset[choice1].astype(float)
+							except:
+								st.warning('This is a non-numeric column')
+							choice2 = st.selectbox('Choose Y-axis',cols)
+							if choice2:
+								cols.remove(choice2)
+								try:
+									dataset[choice2] = dataset[choice2].astype(float)
+								except:
+									st.warning('This is a non-numeric column')
+								choice3 = st.selectbox('Choose Z-axis',cols)
+								if choice3:
+									try:
+										dataset[choice23 = dataset[choice3].astype(float)
+									except:
+										st.warning('This is a non-numeric column')
+									
+									st.plotly_chart(px.scatter_3d(dataset,x=choice1,y=choice2,z=choice3))		
+				
+				except:
+					st.error('Something went wrong!')						
+					
+									
+							
+							
+				
+				
 			if choice=='2-D visualization':
 				st.info('Choose X-axis as numerical, Y-axis may or may not be numerical')
 				try:
