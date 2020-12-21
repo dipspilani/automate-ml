@@ -158,7 +158,11 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 					k+=1
 				inp = st.number_input('Enter the number of components to use' , value = 0 , min_value = 0,max_value = k-1)
 				if inp!=0:
-					st.write('Processing')
+					pca = PCA(n_components = inp)
+					x = pca.fit_transform(dataset)
+					st.markdown(get_table_download_link(x), unsafe_allow_html=True)
+					st.table(x.head())
+					
 			
 			if choice=='PairPlot':
 				try:
