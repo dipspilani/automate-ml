@@ -157,9 +157,9 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 						try:
 							km = KMeans(n_clusters=clus)
 							y = km.fit_predict(dataset)
-							st.write(type(y))
-							#y = pd.DataFrame(y)
-							#dataset['cluster']=y
+							
+							y = pd.DataFrame(y)
+							dataset['cluster']=y
 							#if len(dataset.columns)==3:
 							#	st.plotply_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
 							#else:
