@@ -106,7 +106,7 @@ st.markdown('**Deployed and Maintained by Dipanshu Prasad - https://github.com/d
 
 
 st.sidebar.subheader('Select Mode')
-mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image','Preprocess Text', 'Get Best Model and its code','Visualize and Cluster data'))
+mode = st.sidebar.radio('Mode' , ('Preprocess-1' ,'Preprocess-2','Preprocess Image','Preprocess Text', 'Get Best Model and its code','Dimensionality Reduction, Visualization and Clusterization'))
 st.sidebar.subheader('Steps to use the tool:')
 
 st.sidebar.info('1. Use Preprocess-1 for missing values and label/one-hot encoding')
@@ -128,7 +128,7 @@ if submit and fb:
 #data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx'])
 
 
-if mode=='Visualize and Cluster data':
+if mode=='Dimensionality Reduction, Visualization and Clusterization':
 	st.info('Fix any missing values to avoid erorrs')
 	st.header('Upload data here')
 	data = st.file_uploader(label="Select File (.csv or .xlsx)" , type=['csv','xlsx' , 'data'])
