@@ -151,7 +151,11 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				from sklearn.decomposition import PCA
 				pca = PCA()
 				x = pca.fit_transform(dataset)
-				st.write(type(pca.explained_variance_ratio_))
+				comps = pca.explained_variance_ratio_
+				k=1
+				for i in comps:
+					st.write('Variance explained by Principal Component '+str(k) , i)
+					k+=1
 			
 			if choice=='PairPlot':
 				try:
