@@ -154,7 +154,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				comps = pca.explained_variance_ratio_
 				k=1
 				for i in comps:
-					st.write('% Variance explained by Principal Component '+str(k) , np.round(i,5))
+					st.write('% Variance explained by Principal Component '+str(k) , np.round(100*i,5))
 					k+=1
 				inp = st.number_input('Enter the number of components to use' , value = 0 , min_value = 0,max_value = k-1)
 				if inp!=0:
