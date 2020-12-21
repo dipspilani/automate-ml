@@ -171,7 +171,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 									except:
 										st.warning('This is a non-numeric column')
 									
-									st.plotly_chart(px.scatter_3d(dataset,x=choice1,y=choice2,z=choice3))		
+									st.plotly_chart(px.scatter_3d(dataset,x=choice1,y=choice2,z=choice3,width=600))		
 				
 				except:
 					st.error('Something went wrong!')						
