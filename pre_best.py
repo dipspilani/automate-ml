@@ -161,7 +161,6 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if inp!=0:
 					pca = PCA(n_components = inp)
 					x = pca.fit_transform(dataset)
-					st.write(type(x))
 					x = pd.DataFrame(x)
 					st.markdown(get_table_download_link(x), unsafe_allow_html=True)
 					st.table(x.head())
