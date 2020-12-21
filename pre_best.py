@@ -152,16 +152,19 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if cho=='K-Means':
 					from sklearn.cluster import KMeans
 					clus = st.number_input('Enter number of clusters',value=0,min_value=0,max_value=len(dataset))
+					st.write('yo')
 					if clus!=0:
-						km = KMeans(n_clusters=clus)
-						y = km.fit_predict(dataset)
-						y = pd.DataFrame(y)
-						dataset['cluster']=y
-						if len(dataset.columns)==3:
-							st.plotply_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
-						else:
-							st.plotply_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
-						
+						try:
+							km = KMeans(n_clusters=clus)
+							y = km.fit_predict(dataset)
+							y = pd.DataFrame(y)
+							dataset['cluster']=y
+							if len(dataset.columns)==3:
+								st.plotply_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
+							else:
+								st.plotply_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
+						except:
+							st.error('Something went wrong')
 				
 			
 			
