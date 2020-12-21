@@ -150,7 +150,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				cols = list(dataset.columns)
 				try:	
 					choice1 = st.selectbox('Choose X-axis',cols)
-						if choice1:
+					if choice1:
 							cols.remove(choice1)
 							try:
 								dataset[choice1] = dataset[choice1].astype(float)
