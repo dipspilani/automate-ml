@@ -154,7 +154,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				comps = pca.explained_variance_ratio_
 				k=1
 				for i in comps:
-					st.write('Variance explained by Principal Component '+str(k) , i)
+					st.write('Variance explained by Principal Component '+str(k) , np.round(i,5))
 					k+=1
 			
 			if choice=='PairPlot':
