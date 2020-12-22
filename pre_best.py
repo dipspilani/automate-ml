@@ -25,7 +25,7 @@ nltk.download('words')
 nltk.download('averaged_perceptron_tagger')
 
 #xgboost ,deap , update_checker , tqdm , stopit , xgboost
-
+@st.cache(allow_output_mutation=True)
 def get_table_download_link(df):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
     in:  dataframe
@@ -36,13 +36,14 @@ def get_table_download_link(df):
     href = f'<a href="data:file/csv;base64,{b64}" download="corrected.csv">**Download corrected csv file**</a>'
     return href
 
+@st.cache(allow_output_mutation=True)
 def label_encoder(df):
     from sklearn.preprocessing import LabelEncoder
     lab = LabelEncoder()
     df = lab.fit_transform(df).astype(np.float)
     return (df,lab.classes_)
 
-
+@st.cache(allow_output_mutation=True)
 def get_image_download_link(img):
 	"""Generates a link allowing the PIL image to be downloaded
 	in:  PIL image
@@ -54,7 +55,7 @@ def get_image_download_link(img):
 	href = f'<a href="data:file/jpg;base64,{img_str}" download="processed_image.jpg">Download result</a>'
 	return href
 
-
+@st.cache(allow_output_mutation=True)
 def one_hot_encode(df,col):
     from sklearn.preprocessing import OneHotEncoder 
     from sklearn.compose import ColumnTransformer
@@ -66,6 +67,7 @@ def one_hot_encode(df,col):
     dataset = pd.DataFrame(dataset)
     return dataset
 
+@st.cache(allow_output_mutation=True)
 def tpot_object(metric):
     tpot = TPOTClassifier(generations=30,
                           population_size = 50,
@@ -76,17 +78,19 @@ def tpot_object(metric):
                           config_dict = 'TPOT light')
     return tpot
 
-
+@st.cache(allow_output_mutation=True)
 def std_scaler():
     from sklearn.preprocessing import StandardScaler
     std = StandardScaler()
     return std
 
+@st.cache(allow_output_mutation=True)
 def minmax_scaler():
     from sklearn.preprocessing import MinMaxScaler
     msc = MinMaxScaler()
     return msc
 
+@st.cache(allow_output_mutation=True)
 def rob_scaler():
     from sklearn.preprocessing import RobustScaler
     rob = RobustScaler()
