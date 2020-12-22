@@ -149,6 +149,39 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 					except:
 						dataset.drop(columns = [i],inplace=True)
 				cho = st.selectbox('Choose clusterizing strategy',['K-Means','Agglomerative','DBSCAN'])
+				if cho=='DBSCAN':
+					from sklearn.cluster import DBSCAN
+					clus = st.number_input('Enter value of eps(suggested: 0.5)',value=0,min_value=0)
+					clus1 = st.number_input('Enter value of min_samples(suggested: 5)',value=0,min_value=0)
+					if clus!=0 and clus1>=0:
+						clus1 = int(clus1)
+						try:
+							db = DBSCAN(eps=clus,min_samples=clus1)
+							y= db.fit_predict(dataset)
+							y = pd.DataFrame(y)
+							dataset['cluster']=y
+							st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+							if len(dataset.columns)==3:
+								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
+							else:
+								cols = list(dataset.columns)
+								cols.remove('cluster')
+								c1 = st.selectbox('Choose X-axis for Kmeans visualization',cols)
+								cols.remove(c1)
+								c2 = st.selectbox('Choose Y-axis for Kmeans visualization',cols)
+								cols.remove(c2)
+								ck = st.checkbox('Show 3-D visualization')
+								if ck:
+									c3 = st.selectbox('Choose Z-axis for Kmeans visualization',cols)
+									st.plotly_chart(px.scatter_3d(dataset,x=c1,y=c2,z=c3,color='cluster'))
+								else:	
+									st.plotly_chart(px.scatter(dataset,x=c1,y=c2,color='cluster'))
+						except:
+							st.error('Something went wrong')	
+							
+				
+				
+				
 				if cho=='Agglomerative':
 					from sklearn.cluster import AgglomerativeClustering
 					clus = st.number_input('Enter number of clusters',value=0,min_value=0,max_value=len(dataset))
@@ -158,6 +191,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 							y = km.fit_predict(dataset)
 							y = pd.DataFrame(y)
 							dataset['cluster']=y
+							st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
 							if len(dataset.columns)==3:
 								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
 							else:
@@ -187,6 +221,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 							
 							y = pd.DataFrame(y)
 							dataset['cluster']=y
+							st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
 							if len(dataset.columns)==3:
 								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
 							else:
