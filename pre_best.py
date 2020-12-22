@@ -160,7 +160,8 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 							y= db.fit_predict(dataset)
 							y = pd.DataFrame(y)
 							dataset['cluster']=y
-							st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+							st.info('Download cluster labels column here. You can merge it with PCA/NMF/t-SNE results')
+							st.markdown(get_table_download_link(y), unsafe_allow_html=True)
 							if len(dataset.columns)==3:
 								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
 							else:
@@ -191,7 +192,8 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 							y = km.fit_predict(dataset)
 							y = pd.DataFrame(y)
 							dataset['cluster']=y
-							st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+							st.info('Download cluster labels column here. You can merge it with PCA/NMF/t-SNE results')
+							st.markdown(get_table_download_link(y), unsafe_allow_html=True)
 							if len(dataset.columns)==3:
 								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
 							else:
@@ -221,7 +223,8 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 							
 							y = pd.DataFrame(y)
 							dataset['cluster']=y
-							st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+							st.info('Download cluster labels column here, You can merge it with PCA/NMF/t-SNE results')
+							st.markdown(get_table_download_link(y), unsafe_allow_html=True)
 							if len(dataset.columns)==3:
 								st.plotly_chart(px.scatter(dataset,x=cols[0],y=cols[1],color='cluster'))
 							else:
