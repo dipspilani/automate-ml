@@ -343,8 +343,9 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if cx:
 					try:
 						dataset[cx] = dataset[cx].astype(float)
-						st.pyplot(sns.distplot(dataset[cx]))
-						#st.plotly_chart(px.scatter(dataset,x=cx))
+						#st.pyplot(sns.distplot(dataset[cx]))
+						ww = st.number_input(label ='Enter number of bins',value = 10,max_value = 100)
+						st.plotly_chart(px.histogram(dataset,x=cx,nbins=ww))
 					except:
 						st.warning('Non-numeric column')
 						st.plotly_chart(px.scatter(dataset,x=cx))
