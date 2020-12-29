@@ -343,7 +343,8 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				if cx:
 					try:
 						dataset[cx] = dataset[cx].astype(float)
-						st.plotly_chart(px.scatter(dataset,x=cx))
+						st.pyplot(sns.distplot(dataset[cx]))
+						#st.plotly_chart(px.scatter(dataset,x=cx))
 					except:
 						st.warning('Non-numeric column')
 						st.plotly_chart(px.scatter(dataset,x=cx))
