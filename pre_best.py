@@ -333,7 +333,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 			if choice=='PairPlot':
 				try:
 					with st.spinner('Creating pairplot... :hourglass:'):
-						st.pyplot(sns.pairplot(dataset))
+						st.pyplot(sns.pairplot(dataset,kind='reg'))
 				except:
 					st.error('Something went wrong')
 			if choice=="1-D visualization":
@@ -385,14 +385,14 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				
 				
 			if choice=='2-D visualization':
-				st.info('Choose X-axis as numerical, Y-axis may or may not be numerical')
+				st.info('Choose X-axis as numerical/categorical, Y-axis must be numerical')
 				try:
 					cols = list(dataset.columns)
 					choice1 = st.selectbox('Choose X-axis',cols)
 					if choice1:
 						cols.remove(choice1)
 						try:
-							dataset[choice1] = dataset[choice1].astype(float)
+							#dataset[choice1] = dataset[choice1].astype(float)
 							choice2 = st.selectbox('Choose Y-axis',cols)
 							if choice2:
 								cols.remove(choice2)
@@ -408,7 +408,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 												st.warning('Something went wrong, hue not used')
 												st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 									else:
-										st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
+										st.pyplot(sns.jointplot(dataset[choice1],dataset[choice2],kind='reg'))
 								except:
 									st.warning('This column does not have numeric values')
 									st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
