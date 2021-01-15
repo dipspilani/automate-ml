@@ -408,7 +408,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 												st.warning('Something went wrong, hue not used')
 												st.plotly_chart(px.scatter(dataset,x=choice1,y=choice2))
 									else:
-										plt.figure(figsize=(10,10))
+										
 										st.pyplot(sns.jointplot(x=dataset[choice1],y=dataset[choice2],kind='reg'))
 								except:
 									st.warning('This column does not have numeric values')
