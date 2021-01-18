@@ -799,11 +799,7 @@ if mode=='Preprocess-1':
                  st.warning('Selected Column has string values, so numerical preprocessing will not work')
 
              if dataset[error[:ind-1]].dtype==float:
-                 choicee = st.selectbox('Select Strategy' , ["None" , "Back Fill" , "Forward Fill","Mean Fill" , "Median Fill" , "Mode Fill" , "Random Fill(random value from same column)" , "Custom Fill"])
-		 if choice=="Back Fill":
-			 dataset[error[:ind-1]].fillna(method='bfill' , inplace=True)
-			 st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
-                     	 st.table(dataset.head(8))	
+                 choicee = st.selectbox('Select Strategy' , ["None" , "Back Fill" , "Forward Fill","Mean Fill" , "Median Fill" , "Mode Fill" , "Random Fill(random value from same column)" , "Custom Fill"])	
                  if choicee=="Mean Fill":
                      if dataset[error[:ind-1]].dtype==int:
                          dataset[error[:ind-1]].fillna(int(np.mean(dataset[error[:ind-1]])) , inplace = True)
@@ -816,6 +812,10 @@ if mode=='Preprocess-1':
                      dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].median() , inplace = True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
+		 elif choice=="BackFill":
+				dataset[error[:ind-1]].fillna(method='bfill' , inplace = True)
+				st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+                     		st.table(dataset.head(8))
 
                  elif choicee=="Mode Fill":
                      dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].mode()[0] , inplace = True)
