@@ -800,6 +800,15 @@ if mode=='Preprocess-1':
 
              if dataset[error[:ind-1]].dtype==float:
                  choicee = st.selectbox('Select Strategy' , ["None" , "Back Fill" , "Forward Fill","Mean Fill" , "Median Fill" , "Mode Fill" , "Random Fill(random value from same column)" , "Custom Fill"])	
+                 if choicee=='Back Fill':
+                     dataset[error[:ind-1]].fillna(method='bfill' , inplace=True)
+                     st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+                     st.table(dataset.head(8))
+                 if choicee=='Forward Fill':
+                     dataset[error[:ind-1]].fillna(method='ffill' , inplace=True)
+                     st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
+                     st.table(dataset.head(8))
+                     
                  if choicee=="Mean Fill":
                      if dataset[error[:ind-1]].dtype==int:
                          dataset[error[:ind-1]].fillna(int(np.mean(dataset[error[:ind-1]])) , inplace = True)
@@ -807,7 +816,7 @@ if mode=='Preprocess-1':
                          dataset[error[:ind-1]].fillna(np.round(dataset[error[:ind-1]].mean()) , inplace = True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
-	
+		 
                  elif choicee=="Median Fill":
                      dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].median() , inplace = True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
