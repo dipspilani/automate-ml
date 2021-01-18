@@ -812,10 +812,6 @@ if mode=='Preprocess-1':
                      dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].median() , inplace = True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
-		elif choice=="BackFill":
-				dataset[error[:ind-1]].fillna(method='bfill' , inplace = True)
-				st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
-                     		st.table(dataset.head(8))
 
                  elif choicee=="Mode Fill":
                      dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].mode()[0] , inplace = True)
