@@ -845,11 +845,11 @@ if mode=='Preprocess-1':
                          
              else:
                  choice_text = st.selectbox('Select Strategy' , ["None" ,"Back Fill" , "Forward Fill", "Custom Fill" , "Mode Fill" , "Random Fill"])
-                 if choicee=='Back Fill':
+                 if choice_text=='Back Fill':
                      dataset[error[:ind-1]].fillna(method='bfill' , inplace=True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
-                 if choicee=='Forward Fill':
+                 if choice_text=='Forward Fill':
                      dataset[error[:ind-1]].fillna(method='ffill' , inplace=True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
