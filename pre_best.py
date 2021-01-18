@@ -141,12 +141,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 			if x:
 				st.table(dataset.head())
 			choice = st.selectbox('Choose Operation',['None','PairPlot','HeatMap','3-D Visualization','2-D visualization','1-D visualization','PCA','NMF','t-SNE','Clusterize data'])
-			if choice=='HeatMap':
- 				try:
-					corr1 = dataset.corr()
-					st.pyplot(sns.heatmap(corr1,annot=True))
- 				except:
- 					st.error('Something went wrong!')
+
 			if choice=='Clusterize data':
 				st.info('For visualizing clusterization, it is suggested that dimensions are reduced to 2-3. Else, you can also visualize by selection of 2-3 columns from the lot')
 				cols = list(dataset.columns)
