@@ -807,7 +807,7 @@ if mode=='Preprocess-1':
                          dataset[error[:ind-1]].fillna(np.round(dataset[error[:ind-1]].mean()) , inplace = True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
                      st.table(dataset.head(8))
-
+	
                  elif choicee=="Median Fill":
                      dataset[error[:ind-1]].fillna(dataset[error[:ind-1]].median() , inplace = True)
                      st.markdown(get_table_download_link(dataset), unsafe_allow_html=True)
