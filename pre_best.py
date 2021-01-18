@@ -145,7 +145,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				try:
 					hm = dataset.corr()
 					st.dataframe(hm)
-					st.pyplot(sns.heatmap(hm))
+					st.plotly_chart(px.imshow(hm))
 				except:
 					st.error('Something went wrong')
 			if choice=='Clusterize data':
