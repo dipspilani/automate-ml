@@ -145,7 +145,7 @@ if mode=='Dimensionality Reduction, Visualization and Clusterization':
 				try:
 					hm = dataset.corr()
 					st.dataframe(hm)
-					st.pyplot(sns.heatmap(hm,annot=True))
+					st.pyplot(sns.heatmap(hm))
 				except:
 					st.error('Something went wrong')
 			if choice=='Clusterize data':
